@@ -1,6 +1,7 @@
 import React,{useRef, useState} from 'react'
 import { UseSAT } from '../../customHook/useSAT';
 import './index.css'
+import * as JSZip from "jszip"
 export default function Form() {
 
   const [typeFile, settypeFile] = useState<string | null>(null);
@@ -13,10 +14,17 @@ export default function Form() {
 
   const handleSubmit = async (e:any) => {
     e.preventDefault()
-    const file = fileInput.current?.files?.[0] 
-    const contentFile = await file?.text()
-    const convertedFile = UseSAT(contentFile,typeFile, name )
-    console.log(convertedFile);
+    const file: any = fileInput.current?.files?.[0]
+    
+    const zip = new JSZip()
+    let unzippedFiles = await zip.loadAsync(file)
+    const contentFiles = []
+    for (const [key, value] of  Object.entries(unzippedFiles.files)) {
+      contentFiles.push(await value.async('string')) 
+    }
+    const contentFile = contentFiles[0]
+
+    UseSAT(contentFile,typeFile, name )
   }
   return (
     <div className='form-wrapper'>

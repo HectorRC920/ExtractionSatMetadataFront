@@ -1,5 +1,4 @@
 import * as XLSX from "xlsx"
-import * as fs from 'fs';
 export const UseSAT = ( file : any, type: any, name: string | null ) => {
   let lines = file.split(/\r?\n|\r|\n/)
   let headers = lines[0].split('~')
