@@ -1,7 +1,7 @@
 import React,{useRef, useState} from 'react'
 import { UseSAT } from '../../customHook/useSAT';
 import './index.css'
-import * as JSZip from "jszip"
+import JSZip from "jszip"
 export default function Form() {
 
   const [typeFile, settypeFile] = useState<string | null>(null);
