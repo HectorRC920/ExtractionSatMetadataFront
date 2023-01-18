@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 1fr; 
   gap: 10px;
+  color: black;
 }
 
 .form-wrapper{
@@ -10,7 +11,16 @@
   padding: 30px;
   border-radius: 50px;
   border-radius: 37px;
-background: #5b5252;
-box-shadow:  31px 31px 61px #544b4b,
-             -31px -31px 61px #625959;
+  border-radius: 50px;
+  background: #ffffff;
+  box-shadow:  20px 20px 60px #d9d9d9,
+               -20px -20px 60px #ffffff;
+}
+.input-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.input-text{
+  margin-right: 10px;
 }

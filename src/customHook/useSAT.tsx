@@ -56,5 +56,5 @@ export const UseSAT = ( file : any, type: any, name: string | null ) => {
   const worksheet = XLSX.utils.json_to_sheet(arrayOfObjects);
   const workbook = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(workbook, worksheet, `${type}`);
-  return XLSX.writeFile(workbook, `${name}.xlsx`);
+  return XLSX.writeFile(workbook, `${type}${name}.xlsx`);
 }
