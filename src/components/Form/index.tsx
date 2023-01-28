@@ -14,6 +14,9 @@ export default function Form() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const file: any = fileInput.current?.files?.[0];
+    
+    console.log(e);
+    
 
     const zip = new JSZip();
     let unzippedFiles = await zip.loadAsync(file);
@@ -56,12 +59,26 @@ export default function Form() {
           <div className='input-wrapper' >
             <p className='input-text'>{typeFile}</p>
             <label>
-              <input
+              <select name="month" id="monthSelect" onChange={(event) => setName(event.target.value)}>
+                <option value="Enero">Enero</option>
+                <option value="Febrero">Febrero</option>
+                <option value="Marzo">Marzo</option>
+                <option value="Abril">Abril</option>
+                <option value="Mayo">Mayo</option>
+                <option value="Junio">Junio</option>
+                <option value="Julio">Julio</option>
+                <option value="Agosto">Agosto</option>
+                <option value="Septiembre">Septiembre</option>
+                <option value="Octubre">Octubre</option>
+                <option value="Noviembre">Noviembre</option>
+                <option value="Diciembre">Diciembre</option>
+              </select>
+              {/* <input
                 type='text'
                 name='nombre'
                 placeholder='mes'
                 onChange={(event) => setName(event.target.value)}
-              />
+              /> */}
             </label>
           </div>
         </div>
