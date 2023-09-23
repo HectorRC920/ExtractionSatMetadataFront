@@ -53,6 +53,17 @@ export const UseSAT = ( file : any, type: any, name: string | null ) => {
     }
     arrayOfObjects.push(object)  
   }
+  arrayOfObjects.pop()
+  let total = 0;
+  arrayOfObjects.forEach((element: any) => {
+    if(typeof element.Monto === 'number' && element.Estatus === 'Vigente'){
+      total += element.Monto
+    }
+  });
+  arrayOfObjects.push({
+    'Monto': total
+  })
+  
   const worksheet = XLSX.utils.json_to_sheet(arrayOfObjects);
   const workbook = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(workbook, worksheet, `${type}`);

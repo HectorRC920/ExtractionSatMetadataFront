@@ -15,9 +15,6 @@ export default function Form() {
     e.preventDefault();
     const file: any = fileInput.current?.files?.[0];
     
-    console.log(e);
-    
-
     const zip = new JSZip();
     let unzippedFiles = await zip.loadAsync(file);
     const contentFiles = [];
@@ -25,7 +22,7 @@ export default function Form() {
       contentFiles.push(await value.async('string'));
     }
     const contentFile = contentFiles[0];
-
+    
     UseSAT(contentFile, typeFile, name);
   };
   return (
@@ -33,7 +30,7 @@ export default function Form() {
       <label htmlFor=''>Ingresa info</label>
       <form action='' onSubmit={handleSubmit}>
         <div className='inputs-wrapper'>
-          <input name='file' type={'file'} ref={fileInput}></input>
+          <input name='file' type={'file'} accept='.zip,.rar' ref={fileInput}></input>
 
           <label>
             <input
